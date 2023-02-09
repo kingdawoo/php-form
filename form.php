@@ -163,7 +163,7 @@ if(move_uploaded_file($_FILES["img"]["tmp_name"], $filepath)) {
 } 
 
 else {
-echo "Error";
+echo "Error file";
 }
 
 } 
