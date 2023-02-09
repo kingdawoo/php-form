@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     
     <!-- JS/Script -->
-    <script defer>
+    <!-- <script defer>
         
         // Funktion som tar text och bild inmatad av användaren och visar de i webbsidan
         function displayValues() {
@@ -55,7 +55,7 @@
         return false;
         }
     
-    </script>
+    </script> -->
 
     <!-- CSS/Style -->
     <style>
@@ -109,9 +109,9 @@
             font-weight: bold;
         }
 
-        .box {
+        /* .box {
             text-align: center;
-        }
+        } */
     
     </style>
 </head>
@@ -142,11 +142,32 @@
         <input type="file" accept="image/png, image/jpeg" name="img" id="img" class="img-upload">
         </div>
 
-        <input onclick="displayValues()" type="button" value="Show" class="submit-btn">
+        <input type="submit" value="Show" name="Submit" class="submit-btn">
      
         </form>
     </div>
 </fieldset><br>
+
+<?php 
+if(isset($_POST['Submit'])){
+
+echo $_POST["fname"] . " " . $_POST["lname"];
+echo '<br>';
+echo $_POST["date-of-birth"];
+echo '<br>';
+
+$filepath = $_FILES["img"]["name"];
+
+if(move_uploaded_file($_FILES["img"]["tmp_name"], $filepath)) {    
+    echo "<img src=".$filepath." height=200 width=300 />";
+} 
+
+else {
+echo "Error";
+}
+
+} 
+?>
 
 </body>
 </html>
