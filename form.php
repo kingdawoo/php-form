@@ -58,6 +58,10 @@
             width: 20%;
             font-weight: bold;
         }
+
+        .box {
+            text-align: center;
+        }
     
     </style>
 </head>
@@ -97,16 +101,20 @@
 <!-- PHP -->
 <?php 
 if(isset($_POST['Submit'])){
-echo $_POST["fname"] . " " . $_POST["lname"];
-echo '<br>';
-echo $_POST["date-of-birth"];
-echo '<br>';
+$fname = $_POST["fname"];
+$lname = $_POST["lname"];
+$birthdate = $_POST["date-of-birth"];
 
 $target_dir = "uploadedfiles/";
 $filepath = $target_dir . basename($_FILES["img"]["name"]);
 
 if(move_uploaded_file($_FILES["img"]["tmp_name"], $filepath)) {    
-    echo "<img src=".$filepath." height=200 width=300 />";
+    $div = '<div class=box>';
+    $div .= $fname . " " . $lname . '<br>';
+    $div .= $birthdate . '<br>';
+    $div .= "<img src=".$filepath." height=200 width=300 />";
+    $div .= '</div>';
+    echo $div;
 } 
 
 else {
