@@ -97,13 +97,13 @@
 <!-- PHP -->
 <?php 
 if(isset($_POST['Submit'])){
-
 echo $_POST["fname"] . " " . $_POST["lname"];
 echo '<br>';
 echo $_POST["date-of-birth"];
 echo '<br>';
 
-$filepath = $_FILES["img"]["name"];
+$target_dir = "uploadedfiles/";
+$filepath = $target_dir . basename($_FILES["img"]["name"]);
 
 if(move_uploaded_file($_FILES["img"]["tmp_name"], $filepath)) {    
     echo "<img src=".$filepath." height=200 width=300 />";
