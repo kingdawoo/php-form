@@ -7,56 +7,6 @@
     <title>Form</title>
     <link rel="stylesheet" href="style.css">
     
-    <!-- JS/Script -->
-    <!-- <script defer>
-        
-        // Funktion som tar text och bild inmatad av användaren och visar de i webbsidan
-        function displayValues() {
-        
-        // Ta värden och lagra de i variabler
-        var fName = document.getElementById('fname').value;
-        var lName = document.getElementById('lname').value;
-        var birthDate = document.getElementById('date-of-birth').value;
-        var imgFile = document.getElementById('img').files[0];
-
-        // Skapa element och lagra de i variabler
-        var box = document.createElement('div');
-        var nameText = document.createElement('h3');
-        var dateText = document.createElement('h3');
-        var img = document.createElement('img');
-
-        // Ge div element en class för modifiering i CSS
-        box.classList.add("box");
-
-        // Lägg till child element i parent element
-        document.body.appendChild(box);
-        box.appendChild(nameText);
-        box.appendChild(dateText);
-        box.appendChild(img);
-
-        // Adjustera storlek på bild
-        img.setAttribute('width', '200px');
-        
-        // Lägg till önskad text i header element
-        nameText.innerText = fName + " " + lName;
-        dateText.innerText = birthDate;
-
-        // Inte min kod men förstår den, tar bilden och visar den med hjälp av FileReader object
-        var reader = new FileReader(); // Skapa ny instans av 'FileReader' objektet, har metoder som läser filer och gör de till string
-        
-        reader.readAsDataURL(imgFile); // läser innehållet i filen och returnerar den som en Data URL-sträng
-
-        reader.onload = function(e) { // Funktion körs när datan har laddats in till minnet
-            
-            img.src = e.target.result; // Ställer in img-elementets src-attribut till innehållet i filen och visar bilden
-        }
-
-        // Stanna som den är, type="submit" skulle refresha direkt efter och ta bort texten
-        return false;
-        }
-    
-    </script> -->
-
     <!-- CSS/Style -->
     <style>
         
@@ -108,10 +58,6 @@
             width: 20%;
             font-weight: bold;
         }
-
-        /* .box {
-            text-align: center;
-        } */
     
     </style>
 </head>
@@ -135,7 +81,7 @@
 
         <div>
         <label for="date-of-birth"><b>Birth Date:</b></label>
-        <input type="text" name="date-of-birth" id="date-of-birth">
+        <input type="date" name="date-of-birth" id="date-of-birth">
         </div>
 
         <div>
@@ -148,6 +94,7 @@
     </div>
 </fieldset><br>
 
+<!-- PHP -->
 <?php 
 if(isset($_POST['Submit'])){
 
@@ -163,7 +110,7 @@ if(move_uploaded_file($_FILES["img"]["tmp_name"], $filepath)) {
 } 
 
 else {
-echo "Error file";
+echo "File error";
 }
 
 } 
